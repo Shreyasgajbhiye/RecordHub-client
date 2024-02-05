@@ -3,7 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
 import Mentor from './components/getMentor/mentor';
 import Add from './components/addMentor/addMentor'
-
+import Login from './components/login/login'
 //we install 3 package axios, react-router-dom, react-hot-toast
 
 const route = createBrowserRouter([
@@ -18,6 +18,10 @@ const route = createBrowserRouter([
   {
     path:"/add",
     element: <Add/>     // we will pass component here
+  },
+  {
+    path:"/login",
+    element: <Login/>     // we will pass component here
   },
 ])
 function App() {
