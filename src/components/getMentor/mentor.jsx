@@ -15,7 +15,7 @@ const Mentor = () => {
     <div className="userTable">
          
             <Link to={"/add"} className="addButton">Add mentor</Link>  
-            <Link to={"/login"} className="addButton">Login</Link>  
+            <Link to={"/home"} className="addButton">Home</Link>  
             <table border={1} cellPadding={10} cellSpacing={0}>
                 <thead>
                     <tr>
