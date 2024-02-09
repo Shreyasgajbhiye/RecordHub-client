@@ -4,12 +4,15 @@ import './App.css';
 import Mentor from './components/getMentor/mentor';
 import Add from './components/addMentor/addMentor'
 import Login from './components/login/login'
+import Home from './components/home';
+import Slidebar from './components/slideBar/slidebar';
+import Container from './Container';
 //we install 3 package axios, react-router-dom, react-hot-toast
 
 const route = createBrowserRouter([
   {
     path:"/",
-    element: <Mentor/>,      // we will pass component here
+    element: <Container/>,      // we will pass component here
   },
   {
     path:"/edit",
@@ -23,6 +26,14 @@ const route = createBrowserRouter([
     path:"/login",
     element: <Login/>     // we will pass component here
   },
+  {
+    path:"/home",
+    element: <Home/>     // we will pass component here
+  },
+  {
+    path:"getAll",
+    element:<Mentor/>
+  }
 ])
 function App() {
   return (
@@ -33,6 +44,7 @@ function App() {
 
       </RouterProvider>
     </div>
+    
   );
 }
 
