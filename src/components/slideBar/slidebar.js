@@ -1,22 +1,48 @@
 import React, { useState } from 'react'
 import img from '../../assets/control.png'
-import setting from '../../assets/Setting.png'
+import Login from '../login/login';
+import Home from '../home';
+import Mentor from '../getMentor/mentor';
+import FolderIcon from '@mui/icons-material/Folder';
+import GroupIcon from '@mui/icons-material/Group';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Add from '../addMentor/addMentor';
+import Edit from '../updateMentor/updateMentor'
 function Slidebar() {
   const [open, setOpen] = useState(true);
+  
+  const [selectedMenuItem, setSelectedMenuItem] = useState(0);
+
+  const handleMenuItemClick = (index) => {
+    setSelectedMenuItem(index);
+    console.log("Selected Menu Item:", index);  };
   const menus = [
+  
     {
       title:"Home",
-      src:"Setting"
+      icon:<GroupIcon/>,
+      gap:false,
+      component: <Mentor />,
+      
     },
     {
-      title:"Home",
-      src:"Setting",
-      gap:true
+      title:"Group",
+      icon:<FolderIcon/>,
+      gap:false,
+      component: <Add />,
+    },
+    
+    {
+      title:"Folder",
+      icon:<FolderIcon/>,
+      component: <Login />,
     },
     {
-      title:"Home",
-      src:"login"
-    }
+      title:"Log out",
+      icon:<LogoutIcon/>,
+      gap:true,
+      component: <Edit />,
+    },
   ]
   return (
     <div className='flex'>
@@ -36,11 +62,13 @@ function Slidebar() {
           {menus.map((Menu, index)=>(
             <li
                key={index}
+               onClick={() => handleMenuItemClick(index)}
               className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               ${Menu.gap ? "mt-9" : "mt-2"} ${
                 index === 0 && "bg-light-white"
-              } `}>
-              <img src={`./src/assets/${Menu.src}.png`} />
+              } `}
+              >
+              {Menu.icon}
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 {Menu.title}
               </span>
@@ -48,9 +76,9 @@ function Slidebar() {
           ))}
         </ul>
       </div>
-
-      <div className='p-7 text-2xl font-semibold flex-1 h-screen'>
-        <h1>Demo</h1>
+      
+      <div className='h-screen w-screen'>
+        {selectedMenuItem !== null && menus[selectedMenuItem].component}
       </div>
     </div>
   )

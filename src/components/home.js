@@ -1,11 +1,10 @@
 import React from 'react'
 import Slidebar from './slideBar/slidebar.js'
-import '../App.css'
+import '../App2.css'
 
 function Home() {
   return (
-    <div className='App'>
-        <Slidebar/>
+    <div className=''>
     </div>
   )
 }
